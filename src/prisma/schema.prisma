@@ -4,7 +4,7 @@ generator client {
 
 generator erd {
   provider = "prisma-erd-generator"
-  output   = "../generated-erd.svg"
+  output   = "../generated-erd.pdf"
 }
 
 datasource db {
