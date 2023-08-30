@@ -2,7 +2,36 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "../generated-erd.svg"
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+}
+
+model User {
+  id String @id @default(uuid())
+
+  // Local auth 
+  username String?
+  password String?
+
+  email String?
+
+  permission   Permission @relation(fields: [permissionId], references: [id])
+  permissionId String
+}
+
+model Permission {
+  id String @id @default(uuid())
+
+  arName  String // Arabic name
+  enName  String // English name 
+  ckbName String // Kurdish name 
+  name    String @unique // unique name for the permisson 
+
+  User User[] @relation()
 }
