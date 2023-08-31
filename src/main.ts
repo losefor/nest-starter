@@ -2,12 +2,14 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as morgan from 'morgan';
+import * as cors from 'cors';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Logging
   app.use(morgan('dev'));
+  app.use(cors());
 
   if (process.env.NODE_ENV !== 'production') {
     const config = new DocumentBuilder()
