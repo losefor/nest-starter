@@ -32,6 +32,8 @@ yarn install
 
 ![Auto generated erd](./src/prisma/generated-erd.svg)
 
+### Versioning
+
 ## Production-Grade Tools and Libraries
 
 To ensure the reliability, security, and performance of our Nest.js application in production, we should use the following tools and libraries:
