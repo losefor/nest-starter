@@ -3,13 +3,22 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as morgan from 'morgan';
 import * as cors from 'cors';
+import { VersioningType } from '@nestjs/common';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Logging
+  // Setup logging
   app.use(morgan('dev'));
+
+  // Setup cors
   app.use(cors());
+
+  app.enableVersioning({
+    type: VersioningType.HEADER,
+    header: 'version',
+    defaultVersion: '1',
+  });
 
   if (process.env.NODE_ENV !== 'production') {
     const config = new DocumentBuilder()
