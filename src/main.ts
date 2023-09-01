@@ -1,8 +1,9 @@
+import helmet from 'helmet';
+import * as morgan from 'morgan';
+import * as cors from 'cors';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as morgan from 'morgan';
-import * as cors from 'cors';
 import { VersioningType } from '@nestjs/common';
 
 async function bootstrap() {
@@ -13,6 +14,9 @@ async function bootstrap() {
 
   // Setup cors
   app.use(cors());
+
+  // Setup security headers
+  app.use(helmet());
 
   app.enableVersioning({
     type: VersioningType.HEADER,
