@@ -43,14 +43,14 @@ To ensure the reliability, security, and performance of our Nest.js application 
 - [x] **express**: The foundation of Nest.js, providing a fast and minimalist web framework.
 - [x] **helmet**: Enhances security by setting appropriate HTTP headers.
 - [x] **morgan**: Logs incoming requests and responses for debugging and monitoring.
-- [ ] **class-validator**: Data validation and sanitization to prevent vulnerabilities.
+- [x] **class-validator**: Data validation and sanitization to prevent vulnerabilities.
 - [ ] **passport.js**: Authentication middleware with support for various strategies.
 - [x] **cors**: Middleware to handle Cross-Origin Resource Sharing.
 - [x] **winston**: Logging libraries for structured and customizable logs.
 - [x] **prisma**: A powerful Object-Relational Mapping library for database interactions.
 - [ ] **Memcached**: In-memory caching solutions for improved performance.
 - [ ] **nodemailer**: Sending emails, useful for features like password resets.
-- [ ] **pm2**: Process manager for monitoring, restarting, and load balancing.
+- [x] **pm2**: Process manager for monitoring, restarting, and load balancing.
 - [x] **helmet**: Content Security Policy middleware to prevent XSS attacks.
 - [x] **jest**: Testing frameworks for unit and integration tests.
 - [ ] **supertest**: Library for testing HTTP requests and responses.
