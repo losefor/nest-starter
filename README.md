@@ -40,27 +40,27 @@ Versioning, especially in the context of software development and APIs, brings s
 
 To ensure the reliability, security, and performance of our Nest.js application in production, we should use the following tools and libraries:
 
-- **express**: The foundation of Nest.js, providing a fast and minimalist web framework.
-- **helmet**: Enhances security by setting appropriate HTTP headers.
-- **morgan**: Logs incoming requests and responses for debugging and monitoring.
-- **class-validator**: Data validation and sanitization to prevent vulnerabilities.
-- **passport.js**: Authentication middleware with support for various strategies.
-- **cors**: Middleware to handle Cross-Origin Resource Sharing.
-- **winston**: Logging libraries for structured and customizable logs.
-- **prisma**: A powerful Object-Relational Mapping library for database interactions.
-- **Memcached**: In-memory caching solutions for improved performance.
-- **nodemailer**: Sending emails, useful for features like password resets.
-- **pm2**: Process manager for monitoring, restarting, and load balancing.
-- **helmet**: Content Security Policy middleware to prevent XSS attacks.
-- **jest**: Testing frameworks for unit and integration tests.
-- **supertest**: Library for testing HTTP requests and responses.
-- **eslint**: Static code analysis tool for code quality checks.
-- **prettier**: Code formatting tool for maintaining consistent styles.
-- **swagger**: Documenting your API endpoints for easy consumption.
-- **sharp**: Image manipulation library used for image optimization
-- **@casl/ability**: ACL authorization
-- **husky**: Set up git hooks
-- **multer**: Multipart handler to upload files
+- [x] **express**: The foundation of Nest.js, providing a fast and minimalist web framework.
+- [x] **helmet**: Enhances security by setting appropriate HTTP headers.
+- [x] **morgan**: Logs incoming requests and responses for debugging and monitoring.
+- [ ] **class-validator**: Data validation and sanitization to prevent vulnerabilities.
+- [ ] **passport.js**: Authentication middleware with support for various strategies.
+- [x] **cors**: Middleware to handle Cross-Origin Resource Sharing.
+- [x] **winston**: Logging libraries for structured and customizable logs.
+- [x] **prisma**: A powerful Object-Relational Mapping library for database interactions.
+- [ ] **Memcached**: In-memory caching solutions for improved performance.
+- [ ] **nodemailer**: Sending emails, useful for features like password resets.
+- [ ] **pm2**: Process manager for monitoring, restarting, and load balancing.
+- [x] **helmet**: Content Security Policy middleware to prevent XSS attacks.
+- [x] **jest**: Testing frameworks for unit and integration tests.
+- [ ] **supertest**: Library for testing HTTP requests and responses.
+- [x] **eslint**: Static code analysis tool for code quality checks.
+- [x] **prettier**: Code formatting tool for maintaining consistent styles.
+- [x] **swagger**: Documenting your API endpoints for easy consumption.
+- [ ] **sharp**: Image manipulation library used for image optimization
+- [ ] **@casl/ability**: ACL authorization
+- [ ] **husky**: Set up git hooks
+- [ ] **multer**: Multipart handler to upload files
 
 ## Contributing
 
