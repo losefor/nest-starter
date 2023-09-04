@@ -57,10 +57,16 @@ To ensure the reliability, security, and performance of our Nest.js application 
 - [x] **eslint**: Static code analysis tool for code quality checks.
 - [x] **prettier**: Code formatting tool for maintaining consistent styles.
 - [x] **swagger**: Documenting your API endpoints for easy consumption.
+- [] **i18n**: Localization functionality.
 - [x] **sharp**: Image manipulation library used for image optimization
 - [ ] **@casl/ability**: ACL authorization
+  - [ ] Cache `ability` instance for recent active users
 - [ ] **husky**: Set up git hooks
 - [x] **multer**: Multipart handler to upload files
+  - [x] Digital ocean upload files
+  - [ ] Maintenance and Cleanup - Implement a routine to clean up unused or expired images from your storage solution. Set up cron jobs or background tasks to perform this cleanup.
+  - [ ] Monitoring and Logging - Set up monitoring and logging to track image-related activities, including uploads, retrievals, and errors. Monitoring helps you identify and address performance issues or anomalies.
+- [ ] **docker**: Docker image for the app
 
 ## Contributing
 
