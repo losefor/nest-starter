@@ -23,15 +23,56 @@ model User {
 
   permission   Permission @relation(fields: [permissionId], references: [id])
   permissionId String
+
+  // Statisticle fields
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+  Image     Image[]
 }
 
 model Permission {
   id String @id @default(uuid())
 
-  arName  String // Arabic name
-  enName  String // English name 
-  ckbName String // Kurdish name 
-  name    String @unique // unique name for the permisson 
+  name   Translation @relation(fields: [nameId], references: [id])
+  nameId String
+
+  arName     String // Arabic name
+  enName     String // English name 
+  ckbName    String // Kurdish name 
+  uniqueName String @unique @map("unique_name") // unique name for the permisson 
 
   User User[] @relation()
+
+  // Statisticle fields
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime? @map("updated_at")
+}
+
+model Image {
+  id       String @id @default(uuid())
+  filename String
+  url      String
+
+  isUsed Boolean @default(false) @map("is_used")
+
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @map("user_id")
+
+  // Metadata
+  width       Int?
+  hight       Int?
+  sizeInBytes Int? @map("size_in_bytes")
+
+  // Statisticle fields
+  createdAt DateTime @default(now()) @map("created_at")
+}
+
+model Translation {
+  id String @id @default(uuid())
+
+  ar  String?
+  en  String?
+  ckb String?
+
+  permissions Permission[]
 }
