@@ -44,7 +44,7 @@ To ensure the reliability, security, and performance of our Nest.js application 
 - [x] **helmet**: Enhances security by setting appropriate HTTP headers.
 - [x] **morgan**: Logs incoming requests and responses for debugging and monitoring.
 - [x] **class-validator**: Data validation and sanitization to prevent vulnerabilities.
-- [ ] **passport.js**: Authentication middleware with support for various strategies.
+- [x] **passport.js**: Authentication middleware with support for various strategies.
 - [x] **cors**: Middleware to handle Cross-Origin Resource Sharing.
 - [x] **winston**: Logging libraries for structured and customizable logs.
 - [x] **prisma**: A powerful Object-Relational Mapping library for database interactions.
@@ -57,10 +57,10 @@ To ensure the reliability, security, and performance of our Nest.js application 
 - [x] **eslint**: Static code analysis tool for code quality checks.
 - [x] **prettier**: Code formatting tool for maintaining consistent styles.
 - [x] **swagger**: Documenting your API endpoints for easy consumption.
-- [ ] **sharp**: Image manipulation library used for image optimization
+- [x] **sharp**: Image manipulation library used for image optimization
 - [ ] **@casl/ability**: ACL authorization
 - [ ] **husky**: Set up git hooks
-- [ ] **multer**: Multipart handler to upload files
+- [x] **multer**: Multipart handler to upload files
 
 ## Contributing
 
