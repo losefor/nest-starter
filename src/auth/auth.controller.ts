@@ -1,8 +1,10 @@
 import { LoginDto } from './dto/login.dto';
 import { AuthService } from './auth.service';
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiTags } from '@nestjs/swagger';
+import { ApplyVersionHeader } from 'src/common/decorators/apply-version-header.decorator';
 
+@ApplyVersionHeader()
 @Controller('auth')
 @ApiTags('Auth')
 export class AuthController {
