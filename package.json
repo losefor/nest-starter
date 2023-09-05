@@ -40,15 +40,16 @@
     "helmet": "^7.0.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "nest-winston": "^1.9.4",
+    "nestjs-pino": "^3.4.0",
     "passport": "^0.6.0",
     "passport-anonymous": "^1.0.1",
     "passport-jwt": "^4.0.1",
+    "pino-http": "^8.5.0",
+    "pino-pretty": "^10.2.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
     "sharp": "^0.32.5",
-    "uuid": "^9.0.0",
-    "winston": "^3.10.0"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@mermaid-js/mermaid-cli": "^10.3.1",

@@ -6,15 +6,19 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { VersioningType } from '@nestjs/common';
 import * as basicAuth from 'express-basic-auth';
+import { Logger } from 'nestjs-pino';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     snapshot: true,
+    bufferLogs: true,
   });
 
-  // Sometime after NestFactory add this to add HTTP Basic Auth
+  // Setup pjino logger as default
+  app.useLogger(app.get(Logger));
+
+  // Protect Swagger
   app.use(
-    // Paths you want to protect with basic auth
     '/docs*',
     basicAuth({
       challenge: true,
