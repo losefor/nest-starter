@@ -8,6 +8,7 @@ import {
   Query,
   Header,
   Res,
+  UseGuards,
 } from '@nestjs/common';
 import { FileFieldsInterceptor } from '@nestjs/platform-express';
 import { ApiBearerAuth, ApiBody, ApiConsumes, ApiTags } from '@nestjs/swagger';
@@ -17,6 +18,9 @@ import { ProcessImageDto } from './dto/process-image.dto';
 import { Response } from 'express';
 import { UploadsService } from './uploads.service';
 import { ApplyVersionHeader } from 'src/common/decorators/apply-version-header.decorator';
+import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
+import { PermissionGuard } from 'src/auth/guards/permission.guard';
+import { CheckPermissionsFor } from 'src/auth/guards/permissions.decorator';
 
 @ApplyVersionHeader()
 @ApiTags('Uploads')
@@ -30,6 +34,8 @@ export class UploadsController {
   @ApiBearerAuth()
   @UseInterceptors(FileFieldsInterceptor([{ name: 'images', maxCount: 1 }]))
   @Post('images')
+  @UseGuards(JwtAuthGuard, PermissionGuard)
+  @CheckPermissionsFor('Image')
   @ApiConsumes('multipart/form-data')
   @ApiBody({
     schema: {
@@ -48,8 +54,8 @@ export class UploadsController {
       images: Express.Multer.File[];
     },
   ) {
-    if (files.images.length === 0) {
-      throw new BadRequestException();
+    if (!files.images) {
+      throw new BadRequestException('Please provide at least one image');
     }
 
     const image = files.images[0];
