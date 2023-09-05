@@ -6,6 +6,7 @@ import {
   Subject,
 } from '@casl/ability';
 import { Prisma } from '@prisma/client';
+import { UserDto } from 'src/users/entities/user.entity';
 
 export type Action = 'manage' | 'create' | 'read' | 'update' | 'delete';
 
@@ -42,7 +43,7 @@ function getAction(letter: Letter): Action {
 
 @Injectable()
 export class CaslAbilityFactory {
-  createForUser(user: any) {
+  createForUser(user: UserDto) {
     const {
       can: allow,
       cannot: forbid,
@@ -51,21 +52,17 @@ export class CaslAbilityFactory {
       PureAbility as AbilityClass<AppAbility>,
     );
 
-    const permissions = user.role;
+    const permissions = user.permission;
 
-    if (user.role.enName === 'Root') {
-      allow('manage', 'all'); // read-write access to everything
-    } else {
-      // Default permissions to noe
-      forbid('manage', 'all');
+    // Default permissions to forbid all for all users
+    forbid('manage', 'all');
 
-      // Detect permissions from the user role
-      for (const subject in permissions) {
-        if (typeof permissions[subject] === 'string') {
-          for (const letter of permissions[subject] as Letter[]) {
-            // Because currently some users have a boolean in their permissions
-            allow(getAction(letter), subject as Subjects);
-          }
+    // Detect permissions from the user role
+    for (const subject in permissions) {
+      if (typeof permissions[subject] === 'string') {
+        for (const letter of permissions[subject] as Letter[]) {
+          // Because currently some users have a boolean in their permissions
+          allow(getAction(letter), subject as Subjects);
         }
       }
     }
