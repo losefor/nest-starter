@@ -20,9 +20,19 @@ export class PermissionGuard implements CanActivate {
     // Reshape the role of the user
     // const [reshapedRole] = this.roleService.reshape([user.role]);
     // user.role = reshapedRole;
-    const hasPermissions = this.caslAbilityFactory.createForUser(req.user);
+    console.log({
+      user: req.user,
+    });
 
-    if (hasPermissions.can(getActionFromRequest(req), subject)) {
+    const hasPermissions = this.caslAbilityFactory.createForUser(req.user);
+    const action = getActionFromRequest(req);
+
+    console.log({
+      action,
+      subject,
+    });
+
+    if (hasPermissions.can(action, subject)) {
       return true;
     }
 

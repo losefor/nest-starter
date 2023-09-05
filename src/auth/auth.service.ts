@@ -31,7 +31,10 @@ export class AuthService {
     }
 
     delete user.password;
-    return this.getTokens(user);
+    return {
+      tokens: await this.getTokens(user),
+      user,
+    };
   }
 
   async getTokens(user: User) {
