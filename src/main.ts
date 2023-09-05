@@ -5,11 +5,24 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { VersioningType } from '@nestjs/common';
+import * as basicAuth from 'express-basic-auth';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     snapshot: true,
   });
+
+  // Sometime after NestFactory add this to add HTTP Basic Auth
+  app.use(
+    // Paths you want to protect with basic auth
+    '/docs*',
+    basicAuth({
+      challenge: true,
+      users: {
+        admin: 'admin',
+      },
+    }),
+  );
 
   // Setup logging
   app.use(morgan('dev'));
