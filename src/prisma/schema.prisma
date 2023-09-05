@@ -27,25 +27,29 @@ model User {
   // Statisticle fields
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @map("updated_at")
-  Image     Image[]
+  images    Image[]
+
+  @@map("users")
 }
 
 model Permission {
   id String @id @default(uuid())
 
   name   Translation @relation(fields: [nameId], references: [id])
-  nameId String
+  nameId String      @map("name_id")
 
-  arName     String // Arabic name
-  enName     String // English name 
-  ckbName    String // Kurdish name 
   uniqueName String @unique @map("unique_name") // unique name for the permisson 
-
-  User User[] @relation()
 
   // Statisticle fields
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime? @map("updated_at")
+
+  // Models you want to control its permissions
+  Image String @default("")
+
+  users User[] @relation()
+
+  @@map("permissions")
 }
 
 model Image {
@@ -65,6 +69,8 @@ model Image {
 
   // Statisticle fields
   createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("images")
 }
 
 model Translation {
@@ -75,4 +81,6 @@ model Translation {
   ckb String?
 
   permissions Permission[]
+
+  @@map("translations")
 }
