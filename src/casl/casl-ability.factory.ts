@@ -14,32 +14,30 @@ export type Subjects = Prisma.ModelName | 'all';
 
 export type AppAbility = PureAbility<[Action, Subjects]>;
 
-enum Letter {
-  c = 'c',
-  r = 'r',
-  u = 'u',
-  d = 'd',
-}
+type PermissionAction = 'c' | 'r' | 'u' | 'd';
 
-function getAction(letter: Letter): Action {
+function getAction(letter: PermissionAction): Action {
   switch (letter) {
     case 'c': {
       return 'create';
     }
-
     case 'r': {
       return 'read';
     }
-
     case 'u': {
       return 'update';
     }
-
     case 'd': {
       return 'delete';
     }
+    default:
+      assertNever(letter);
   }
 }
+
+export const assertNever = (value: never): never => {
+  throw new Error(`Unexpected value ${value}`);
+};
 
 @Injectable()
 export class CaslAbilityFactory {
@@ -60,7 +58,7 @@ export class CaslAbilityFactory {
     // Detect permissions from the user role
     for (const subject in permissions) {
       if (typeof permissions[subject] === 'string') {
-        for (const letter of permissions[subject] as Letter[]) {
+        for (const letter of permissions[subject] as PermissionAction[]) {
           // Because currently some users have a boolean in their permissions
           allow(getAction(letter), subject as Subjects);
         }
