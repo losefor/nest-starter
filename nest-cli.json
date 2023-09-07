@@ -4,10 +4,9 @@
   "sourceRoot": "src",
   "compilerOptions": {
     "deleteOutDir": true,
-    "plugins": [
-      "@nestjs/swagger"
-    ],
-    "webpack": true
+    "plugins": ["@nestjs/swagger"],
+    "webpack": true,
+    "assets": [{ "include": "i18n/**/*", "watchAssets": true }]
   },
   "projects": {
     "image-manipulation": {

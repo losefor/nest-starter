@@ -9,9 +9,23 @@ import { CaslModule } from './casl/casl.module';
 import { UsersModule } from './users/users.module';
 import { PermissionsModule } from './permissions/permissions.module';
 import { LoggerModule } from 'nestjs-pino';
+import { AcceptLanguageResolver, I18nModule } from 'nestjs-i18n';
+import * as path from 'path';
 
 @Module({
   imports: [
+    I18nModule.forRoot({
+      fallbackLanguage: 'en',
+      loaderOptions: {
+        path: path.join(__dirname, '/i18n/'),
+        watch: true,
+      },
+      typesOutputPath: path.join(
+        __dirname,
+        '../src/common/generated/i18n.generated.ts',
+      ),
+      resolvers: [AcceptLanguageResolver],
+    }),
     DevtoolsModule.register({
       http: process.env.NODE_ENV !== 'production',
     }),
