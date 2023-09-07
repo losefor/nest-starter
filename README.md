@@ -59,7 +59,7 @@ To ensure the reliability, security, and performance of our Nest.js application 
 - [x] **prettier**: Code formatting tool for maintaining consistent styles.
 - [x] **swagger**: Documenting your API endpoints for easy consumption.
   - [x] security auth before entering swagger
-- [ ] **i18n**: Localization functionality.
+- [x] **i18n**: Localization functionality.
 - [x] **sharp**: Image manipulation library used for image optimization
 - [x] **@casl/ability**: ACL authorization
   - [ ] Cache `ability` instance for recent active users
