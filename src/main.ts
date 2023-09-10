@@ -23,7 +23,7 @@ async function bootstrap() {
     basicAuth({
       challenge: true,
       users: {
-        admin: 'admin',
+        super: 'super123',
       },
     }),
   );
